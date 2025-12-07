@@ -39,7 +39,7 @@ public class MainController extends MenuController implements Initializable {
         if (SellerDAO.login(user.getText(),password.getText())) { //Llama a SellerDAO para revisar la existencia
                                                                   // de las credenciales en la base de datos
 
-            openNewStage(MANAGEMENT_VIEW_FXML, "Management"); //Llama a la interfaz "hija" y
+            openNewStage(MANAGEMENT_VIEW_FXML, "Administrar"); //Llama a la interfaz "hija" y
                                                                     // le pone como titulo "management"
             closeCurrentStage(user); //Al iniciar sesión correctamente cierra la ventana actual
 
