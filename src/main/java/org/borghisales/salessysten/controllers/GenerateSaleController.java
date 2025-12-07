@@ -40,7 +40,7 @@ public class GenerateSaleController extends MenuController implements Initializa
 
     private final Alert alertCustomer = new Alert(Alert.AlertType.WARNING);
     private final Alert alertProduct = new Alert(Alert.AlertType.WARNING);
-    private final ButtonType buttonTypeAccept = new ButtonType("YES");
+    private final ButtonType buttonTypeAccept = new ButtonType("SÍ");
     private final ButtonType buttonTypeCancel = new ButtonType("NO");
 
 
@@ -132,8 +132,8 @@ public class GenerateSaleController extends MenuController implements Initializa
     }
 
     private void configureAlerts() {
-        configureAlert(alertCustomer, "New customer", "The customer doesn't exist", "Do you want to add it?");
-        configureAlert(alertProduct, "New Product", "The product doesn't exist", "Do you want to add it?");
+        configureAlert(alertCustomer, "Nuevo cliente", "El cliente no existe");
+        configureAlert(alertProduct, "Nuevo producto", "El producto no existe");
     }
 
     private void configureTable() {
@@ -143,10 +143,10 @@ public class GenerateSaleController extends MenuController implements Initializa
     }
 
 
-    private void configureAlert(Alert alert, String title, String header, String content) {
+    private void configureAlert(Alert alert, String title, String header) {
         alert.setTitle(title);
         alert.setHeaderText(header);
-        alert.setContentText(content);
+        alert.setContentText("¿Deseas agregarlo?");
         alert.getButtonTypes().setAll(buttonTypeAccept, buttonTypeCancel);
     }
 
@@ -164,7 +164,7 @@ public class GenerateSaleController extends MenuController implements Initializa
         customer = customerDAO.searchCustomer(customerId);
 
         if (customer != null) {
-            setAlert(Alert.AlertType.CONFIRMATION, "Customer found: " + customer.name()); //Te dice si encontro
+            setAlert(Alert.AlertType.CONFIRMATION, "Cliente encontrado: " + customer.name()); //Te dice si encontro
                                                                                                     // un customer con esa matricula
             customerName.setText(customer.name());
         } else { //En caso de no encontrarlo
@@ -191,7 +191,7 @@ public class GenerateSaleController extends MenuController implements Initializa
         }
 
         stage = new Stage();
-        stage.setTitle("Manage Customer");
+        stage.setTitle("Administrar cliente");
         stage.setScene(scene);
         stage.show();
     }
@@ -209,7 +209,7 @@ public class GenerateSaleController extends MenuController implements Initializa
     }
 
     private void updateProductFields(Product product) {
-        setAlert(Alert.AlertType.CONFIRMATION, "Product found: " + product.name());
+        setAlert(Alert.AlertType.CONFIRMATION, "Producto encontrado: " + product.name());
         productName.setText(product.name());
         stock.setText(String.valueOf(product.stock()));
         price.setText(String.valueOf(product.price()));
@@ -236,18 +236,21 @@ public class GenerateSaleController extends MenuController implements Initializa
         }
 
         stage = new Stage();
-        stage.setTitle("Manage Product");
+        stage.setTitle("Administrar producto");
         stage.setScene(scene);
         stage.show();
     }
 
     //CANCELA LA VENTA
     public void cancel(ActionEvent actionEvent) {
-        if (products.isEmpty())return;
+        if (products.isEmpty()){ //Agrega alerta al botón cancelar //CORRECCIÓN ERROR
+            MenuController.setAlert(Alert.AlertType.INFORMATION, "No se ha ingresado ningún dato que se pueda cancelar");
+            return;
+        }
         MenuController.cleanCells(codCustomer,codProduct,customerName,productName,price,stock); //limpia la tabla
         quantity.getValueFactory().setValue(null);
         tableSale.getItems().clear();
-        MenuController.setAlert(Alert.AlertType.INFORMATION,"Sale Canceled");
+        MenuController.setAlert(Alert.AlertType.INFORMATION,"Venta cancelada");
         total.clear();
         totalDiscount.clear();
         cbDiscount.setValue(Discount.NONE);
@@ -320,7 +323,7 @@ public class GenerateSaleController extends MenuController implements Initializa
         ShoppingCart product = createShoppingCartObject(); //Crea objeto en el carrito
 
         if (isProductAlreadyInCart(product)) {
-            MenuController.setAlert(Alert.AlertType.ERROR, "This product is already in your shopping cart");
+            MenuController.setAlert(Alert.AlertType.ERROR, "Este producto ya se encuentra en tu carrito de compras");
             return;
         }
 
@@ -374,14 +377,24 @@ public class GenerateSaleController extends MenuController implements Initializa
 
 
 
-    private String validateInputs() {
+    /* private String validateInputs() {
         if (productName.getText().isEmpty() || customerName.getText().isEmpty()) {
             return "Missing customer name or product name.";
         } else if (quantity.getValue() == 0) {
             return "Quantity can't be 0.";
         }
         return null;
+    } */
+
+    private String validateInputs() {
+        if (productName.getText().isEmpty() || customerName.getText().isEmpty()) {
+            return "No se ingresó el nombre del cliente o el nombre del producto.";
+        } else if (quantity.getValue() == 0) {
+            return "La cantidad no puede ser 0.";
+        }
+        return null;
     }
+
 
     private void setSerial(){
         idSale = 1+salesDAO.IdSale();
