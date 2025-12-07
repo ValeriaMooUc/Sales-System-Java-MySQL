@@ -32,8 +32,10 @@ public class SalesDAO {
             return 1;
         }
     }
+
+    //Registra o agrega ventas a la base de datos
     public boolean SaveSale(Sales sale){
-        String sql = "INSERT INTO sales (idCustomer,idSeller,numberSales,saleDate,amount,state) values(?,?,?,?,?,?)";
+        String sql = "INSERT INTO sales (idCustomer,idSeller,numberSales,saleDate,amount,state,discount) values(?,?,?,?,?,?,?)";
 
         try (Connection conn = DBConnection.connection();
              PreparedStatement pstmt = conn.prepareStatement(sql)){
@@ -44,6 +46,7 @@ public class SalesDAO {
             pstmt.setDate(4, Date.valueOf(sale.saleDate()));
             pstmt.setDouble(5,sale.amount());
             pstmt.setString(6,sale.state().name());
+            pstmt.setString(7,sale.discount().name()); //agregue a la base el descuento
 
             int rows_affected = pstmt.executeUpdate();
 
@@ -108,7 +111,6 @@ public class SalesDAO {
         }catch (SQLException e){
             MenuController.setAlert(Alert.AlertType.ERROR, "Error searching sales : " + e.getMessage());
         }
-
 
     }
 
