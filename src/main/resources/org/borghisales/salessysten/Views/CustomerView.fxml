@@ -8,51 +8,51 @@
    <children>
       <AnchorPane layoutX="10.0" prefHeight="486.0" prefWidth="782.0">
          <children>
-            <Button layoutX="550.0" layoutY="60.0" mnemonicParsing="false" onAction="#addCustomer" prefHeight="32.0" prefWidth="101.0" text="ADD" />
-            <Button layoutX="550.0" layoutY="98.0" mnemonicParsing="false" onAction="#updateCustomer" prefHeight="32.0" prefWidth="101.0" text="UPDATE" />
-            <Button layoutX="550.0" layoutY="135.0" mnemonicParsing="false" onAction="#deleteCustomer" prefHeight="32.0" prefWidth="101.0" text="DELETE" />
-            <Button layoutX="550.0" layoutY="174.0" mnemonicParsing="false" onAction="#cleanCellsScreen" prefHeight="32.0" prefWidth="101.0" text="CLEAN CELLS" />
+            <Button layoutX="550.0" layoutY="60.0" mnemonicParsing="false" onAction="#addCustomer" prefHeight="32.0" prefWidth="101.0" text="AGREGAR" />
+            <Button layoutX="550.0" layoutY="98.0" mnemonicParsing="false" onAction="#updateCustomer" prefHeight="32.0" prefWidth="101.0" text="ACTUALIZAR" />
+            <Button layoutX="550.0" layoutY="135.0" mnemonicParsing="false" onAction="#deleteCustomer" prefHeight="32.0" prefWidth="101.0" text="ELIMINAR" />
+             <Button layoutX="536.0" layoutY="173.0" mnemonicParsing="false" onAction="#cleanCellsScreen" prefHeight="32.0" prefWidth="130" text="LIMPIAR CELDAS" />
             <TableView fx:id="tableCustomers" layoutX="26.0" layoutY="228.0" prefHeight="221.0" prefWidth="715.0">
                <columns>
-                  <TableColumn fx:id="colId" prefWidth="100.0" text="idCustomer" />
-                  <TableColumn fx:id="colDni" prefWidth="131.0" text="dni" />
-                  <TableColumn fx:id="colName" prefWidth="124.0" text="name" />
-                  <TableColumn fx:id="colAddress" prefWidth="124.0" text="adress" />
-                  <TableColumn fx:id="colState" minWidth="0.0" prefWidth="123.0" text="state" />
-                   <TableColumn fx:id="colNumber" prefWidth="112.0" resizable="false" text="number" />
+                   <TableColumn fx:id="colId" prefWidth="120.0" text="No. CLIENTE" />
+                   <TableColumn fx:id="colDni" prefWidth="111.0" text="ID" />
+                   <TableColumn fx:id="colName" prefWidth="124.0" text="NOMBRE" />
+                   <TableColumn fx:id="colAddress" prefWidth="124.0" text="DIRECCIÓN" />
+                   <TableColumn fx:id="colState" prefWidth="122.0" text="ESTADO" />
+                   <TableColumn fx:id="colNumber" prefWidth="112.0" resizable="false" text="TELÉFONO" />
                </columns>
             </TableView>
-            <Label layoutX="101.0" layoutY="65.0" prefHeight="25.0" prefWidth="85.0" text="DNI:" underline="true">
+            <Label layoutX="91.0" layoutY="64.0" prefHeight="25.0" prefWidth="109.0" text="ID:" underline="true">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
             <TextField fx:id="dni" layoutX="200.0" layoutY="64.0" prefHeight="25.0" prefWidth="304.0" />
-            <Label layoutX="101.0" layoutY="91.0" prefHeight="26.0" prefWidth="85.0" text="NAME:" underline="true">
+            <Label layoutX="91.0" layoutY="93.0" prefHeight="26.0" prefWidth="109.0" text="NOMBRE:" underline="true">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
             <TextField fx:id="name" layoutX="200.0" layoutY="93.0" prefHeight="25.0" prefWidth="304.0" />
-            <Label layoutX="101.0" layoutY="123.0" prefHeight="26.0" prefWidth="85.0" text="ADRESS:" underline="true">
+            <Label layoutX="91.0" layoutY="122.0" prefHeight="26.0" prefWidth="109.0" text="DIRECCIÓN:" underline="true">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
             <TextField fx:id="address" layoutX="200.0" layoutY="123.0" prefHeight="25.0" prefWidth="304.0" />
-             <Label layoutX="101.0" layoutY="154.0" prefHeight="26.0" prefWidth="85.0" text="NUMBER:" underline="true">
+             <Label layoutX="91.0" layoutY="153.0" prefHeight="26.0" prefWidth="109.0" text="TELÉFONO:" underline="true">
                  <font>
                      <Font size="17.0" />
                  </font>
              </Label>
             <TextField fx:id="number" layoutX="200.0" layoutY="153.0" prefHeight="25.0" prefWidth="304.0" />
-            <Label layoutX="101.0" layoutY="184.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="85.0" text="STATE:" underline="true">
+            <Label layoutX="91.0" layoutY="185.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="109.0" text="STATE:" underline="true">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
             <ComboBox fx:id="cbState" layoutX="200.0" layoutY="189.0" prefHeight="25.0" prefWidth="304.0" />
-            <Label alignment="CENTER" layoutY="10.0" prefHeight="30.0" prefWidth="782.0" text="MANAGEMENT CUSTOMER" underline="true">
+            <Label alignment="CENTER" layoutY="10.0" prefHeight="30.0" prefWidth="782.0" text="ADMINISTRAR CLIENTES" underline="true">
                <font>
                   <Font size="20.0" />
                </font>
