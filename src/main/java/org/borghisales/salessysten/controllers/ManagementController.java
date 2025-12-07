@@ -12,9 +12,10 @@ import java.net.URI;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+//TODOS LOS BOTONES DE MANAGEMENT BARRA DE ARRIBA Y RECUADROS
 public class ManagementController extends MenuController implements Initializable {
 
-    private static int lastTab ;
+    private static int lastTab ; //GUARDA LA PAGINA DONDE ESTABA EL USUARIO ANTES DE ENTRAR A OTRA PAGINA
 
     @FXML
     private Button sellerButton;
@@ -24,6 +25,7 @@ public class ManagementController extends MenuController implements Initializabl
 
     @FXML
     void openSeller(ActionEvent actionEvent){
+        System.out.println("Presione seller");
         lastTab = tabPaneManage.getSelectionModel().getSelectedIndex();
         openNewStage(SELLER_VIEW_FXML,"Seller");
         closeCurrentStage(sellerButton);
@@ -42,6 +44,7 @@ public class ManagementController extends MenuController implements Initializabl
 
     }
 
+    //Management ---- > product
     public void openProduct(ActionEvent actionEvent) {
         lastTab = tabPaneManage.getSelectionModel().getSelectedIndex();
         openNewStage(PRODUCT_VIEW_FXML,"Products");
@@ -49,6 +52,7 @@ public class ManagementController extends MenuController implements Initializabl
 
     }
 
+    //Management----->generate sale
     public void openGenerateSale(ActionEvent actionEvent) {
         lastTab = tabPaneManage.getSelectionModel().getSelectedIndex();
         openNewStage(GENERATE_SALE_VIEW_FXML,"Shopping cart");
@@ -61,7 +65,9 @@ public class ManagementController extends MenuController implements Initializabl
 
     }
 
+    //NO FUNCIONA
     public void help(ActionEvent actionEvent) {
+        System.out.println("NO FUNCIONO");
         try {
             Desktop.getDesktop().browse(new URI("https://github.com/Borghii/Sales-System"));
         } catch (Exception e) {
