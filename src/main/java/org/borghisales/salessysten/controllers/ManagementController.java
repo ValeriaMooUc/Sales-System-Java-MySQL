@@ -25,9 +25,8 @@ public class ManagementController extends MenuController implements Initializabl
 
     @FXML
     void openSeller(ActionEvent actionEvent){
-        System.out.println("Presione seller");
         lastTab = tabPaneManage.getSelectionModel().getSelectedIndex();
-        openNewStage(SELLER_VIEW_FXML,"Seller");
+        openNewStage(SELLER_VIEW_FXML,"Vendedor");
         closeCurrentStage(sellerButton);
     }
 
@@ -39,7 +38,7 @@ public class ManagementController extends MenuController implements Initializabl
 
     public void openCustomer(ActionEvent actionEvent) {
         lastTab = tabPaneManage.getSelectionModel().getSelectedIndex();
-        openNewStage(CUSTOMER_VIEW_FXML, "Customer");
+        openNewStage(CUSTOMER_VIEW_FXML, "Cliente");
         closeCurrentStage(sellerButton);
 
     }
@@ -47,7 +46,7 @@ public class ManagementController extends MenuController implements Initializabl
     //Management ---- > product
     public void openProduct(ActionEvent actionEvent) {
         lastTab = tabPaneManage.getSelectionModel().getSelectedIndex();
-        openNewStage(PRODUCT_VIEW_FXML,"Products");
+        openNewStage(PRODUCT_VIEW_FXML,"Productos");
         closeCurrentStage(sellerButton);
 
     }
@@ -55,30 +54,24 @@ public class ManagementController extends MenuController implements Initializabl
     //Management----->generate sale
     public void openGenerateSale(ActionEvent actionEvent) {
         lastTab = tabPaneManage.getSelectionModel().getSelectedIndex();
-        openNewStage(GENERATE_SALE_VIEW_FXML,"Shopping cart");
+        openNewStage(GENERATE_SALE_VIEW_FXML,"Carrito de compras");
         closeCurrentStage(sellerButton);
     }
     public void openSalesReport(ActionEvent actionEvent) {
         lastTab = tabPaneManage.getSelectionModel().getSelectedIndex();
-        openNewStage(REPORT_VIEW_FXML,"Sales");
+        openNewStage(REPORT_VIEW_FXML,"Ventas");
         closeCurrentStage(sellerButton);
 
     }
 
-    //NO FUNCIONA
+    //YA FUNCIONA
     public void help(ActionEvent actionEvent) {
-        System.out.println("NO FUNCIONO");
-        try {
-            Desktop.getDesktop().browse(new URI("https://github.com/Borghii/Sales-System"));
-        } catch (Exception e) {
-            e.printStackTrace();
-            setAlert(Alert.AlertType.ERROR,"The URL could not be opened. Check your internet connection.");
-        }
-
+        MenuController.setAlert(Alert.AlertType.INFORMATION, "Para cualquier duda, leer el manual del software en: https://github.com/Borghii/Sales-System");
     }
 
+
     public void exit(ActionEvent actionEvent) {
-        openNewStage(MAIN_VIEW_FXML,"Login");
+        openNewStage(MAIN_VIEW_FXML,"Registro");
         closeCurrentStage(sellerButton);
     }
 
